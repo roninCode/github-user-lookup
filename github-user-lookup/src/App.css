@@ -1,0 +1,36 @@
+/*.App {
+  text-align: center;
+}*/
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.followers-list {
+  list-style: none;
+}
+
+.followers-list__item {
+  margin-bottom: 10px;
+}
+
+.followers-list__seperator {
+  color: red;
+}
+
+.followers-list__handle {
+  font-weight: bold;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
