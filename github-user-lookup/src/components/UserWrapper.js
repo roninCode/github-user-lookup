@@ -5,6 +5,7 @@ import Followers from './Followers';
 import { fetchUserInfo, fetchUserFollowers } from '../utils/api';
 import PrevPage from './PrevPage';
 import NextPage from './NextPage';
+import Guillermo from './Guillermo';
 
 export default class UserWrapper extends React.Component{
   constructor(props){
@@ -30,7 +31,6 @@ export default class UserWrapper extends React.Component{
       id: follower.id,
       handle: follower.login,
       avatar_url: follower.avatar_url,
-      github_url: follower.html_url
     }
   }
 
@@ -39,13 +39,15 @@ export default class UserWrapper extends React.Component{
     const page = 1;
 
     fetchUserInfo(user).then(res => {
+      const pageTotal = res.followers === 0 ? 1 
+        : Math.ceil(res.followers / 30);
       this.setState({
         error: null,
         user: user,
         followerCount: res.followers,
         userImage: res.avatar_url,
         followerCount: res.followers,
-        pageTotal: Math.ceil(res.followers / 30),
+        pageTotal,
       })
 
       return this.updateFollowersPageState(user, page)
@@ -97,10 +99,14 @@ export default class UserWrapper extends React.Component{
     if (this.state.error) {
       return (
         <div>
-          <h2>Oh no, something went wrong! 💩</h2>
-          <pre>
-            {this.state.error.stack || this.state.error.toString()}
-          </pre>
+          <GetUserName submitUser={this.handleSubmit} />
+          <div className="error-message">
+            <h2>Oh no, something went wrong! 💩</h2>
+            <pre>
+              {this.state.error.stack || this.state.error.toString()}
+            </pre>
+          </div>
+          <Guillermo />
         </div>
       )
     }

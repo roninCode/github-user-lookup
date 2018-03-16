@@ -4,7 +4,7 @@ export function fetchUserInfo(userName) {
   return fetch(`https://api.github.com/users/${userName}?access_token=${accessToken}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error("Error fetching user")
+        throw new Error("Error fetching user: is this a valid username?");
       }
       return response.json();
     })

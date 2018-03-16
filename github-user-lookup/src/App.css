@@ -1,24 +1,21 @@
+/*#######################################################*/
+/*Global*/
+/*#######################################################*/
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Mina|Playfair+Display|Titillium+Web');
 
-h1, h2, h3, h4, h5, p, text {
+h1, h2, h3, h4, h5, p, text, span {
   font-family: Mina;
 }
 
 html {
   background-color: #cbe3e4;
 }
+/*///////End//////////*/
 
-.App {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
+/*#######################################################*/
+/*Headers and Footers*/
+/*#######################################################*/
 .App-header {
   display: flex;
   justify-content: space-between;
@@ -28,8 +25,8 @@ html {
   color: white;
 }
 
-.App-content {
-  flex: 1;
+.header-icons {
+  max-width: 100px;
 }
 
 .footer {
@@ -47,17 +44,32 @@ html {
     clear: both;
   }*/
 }
+/*///////End//////////*/
 
-.header-icons {
-  max-width: 100px;
+
+/*#######################################################*/
+/*Main Content*/
+/*#######################################################*/
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
+.App-content {
+  flex: 1;
+}
+/*///////End//////////*/
+
+
+/*#######################################################*/
+/*User Info*/
+/*#######################################################*/
 .user-image {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-
 .user-image img {
   border-radius: 71px;
   max-height: 175px;
@@ -76,29 +88,51 @@ html {
   border-style: solid;
   border-width: 1px;
 }
+/*///////End//////////*/
 
+
+/*#######################################################*/
+/*Follower Info*/
+/*#######################################################*/
 .followers-list {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .followers-list__image {
-  max-width: 25px;
+  max-width: 50px;
   border-radius: 6px;
 }
 
 .followers-list__item {
   margin-bottom: 10px;
   cursor: pointer;
-}
-
-.followers-list__seperator {
-  color: red;
+  min-width: 250px;
 }
 
 .followers-list__handle {
   font-weight: bold;
+  font-size: 23px;
 }
 
+.page-selectors {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 20%;  
+  margin-right: 20%;
+}
+
+.page-arrows {
+  cursor: pointer;
+}
+/*///////End//////////*/
+
+
+/*#######################################################*/
+/*User Input*/
+/*#######################################################*/
 .text-form {
   width: 100%;
   display: flex;
@@ -123,18 +157,28 @@ html {
   width: 76px;
   border-radius: 4px;
 }
+/*///////End//////////*/
 
-.page-selectors {
-  display: flex;
-  justify-content: space-around;
+
+/*#######################################################*/
+/*Errors*/
+/*#######################################################*/
+.error-message {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 70px;
 }
 
-.page-arrows {
-  cursor: pointer;
+.guillermo {
+  border-top: dashed;
+  border-color: #8cc5b5;
+  text-align: center;
 }
-/*
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+.guillermo video {
+  margin-left: 0%;
+  margin-right: 0%;
+  max-width: 200px;
+  clear: both;
 }
-*/
+/*///////End//////////*/

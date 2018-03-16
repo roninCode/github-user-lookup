@@ -18,7 +18,6 @@ export default class Followers extends React.Component{
         <li onClick={this.selectNewUser.bind(this)} data-id={follower.handle} className='followers-list__item' key={follower.id}>
           <img className="followers-list__image" alt={follower.handle} src={follower.avatar_url} />
           <span className='followers-list__handle'><span> {follower.handle}</span></span> 
-          <span className='followers-list__seperator'> at</span> {follower.github_url}
         </li>
       )
     })
