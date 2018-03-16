@@ -1,4 +1,5 @@
 import React from 'react';
+import ResetUserInput from './ResetUserInput';
 
 export default class GetUserName extends React.Component{
   constructor(props){
@@ -26,12 +27,14 @@ export default class GetUserName extends React.Component{
   render(){
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="text-form" onSubmit={this.handleSubmit}>
           <label>
-            Enter a GitHub UserName to Begin:
-            <input type="text" name="userName" onChange={this.handleChange}/>
+            <p>Enter a GitHub UserName to Begin</p>
+            <input className="input__text-field" type="text" name="userName" onChange={this.handleChange}/>
+            <button className="submit-form" type="submit">Submit</button>
+            
+            <ResetUserInput reset={this.props.reset}/>
           </label>
-          <input type="submit" value="Submit" />
         </form>
       </div>
     )

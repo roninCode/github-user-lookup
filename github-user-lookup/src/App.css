@@ -1,6 +1,18 @@
-/*.App {
-  text-align: center;
-}*/
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Mina|Playfair+Display|Titillium+Web');
+
+h1, h2, h3, h4, h5, p, text {
+  font-family: Mina;
+}
+
+html {
+  background-color: #cbe3e4;
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -8,18 +20,75 @@
 }
 
 .App-header {
-  background-color: #222;
+  display: flex;
+  justify-content: space-between;
+  background-color: #8cc5b5;
   height: 150px;
   padding: 20px;
   color: white;
+}
+
+.App-content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #8cc5b5;
+  font-size: 10px;
+}
+
+@media only screen and (max-width : 575px) {
+  .App-header img{
+    max-width: 35px;
+  }
+
+/*TODO make username and follower count stack at small window*/
+/*  .user-info h2:nth-child(even) {
+    clear: both;
+  }*/
+}
+
+.header-icons {
+  max-width: 100px;
+}
+
+.user-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.user-image img {
+  border-radius: 71px;
+  max-height: 175px;
+}
+
+.user-info, .user-followers{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 14px;
+}
+
+.user-info h2 {
+  background-color: #85c1c1;
+  border-radius: 9px;
+  padding: 15px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .followers-list {
   list-style: none;
 }
 
+.followers-list__image {
+  max-width: 25px;
+  border-radius: 6px;
+}
+
 .followers-list__item {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .followers-list__seperator {
@@ -30,7 +99,42 @@
   font-weight: bold;
 }
 
+.text-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: Mina;
+}
+
+.input__text-field {
+  height: 20px;
+  width: 63%;
+  font-family: Mina;
+  font-size: 16px;
+  box-shadow: 0px 8px 23px 1px teal;
+  -moz-box-shadow: 0px 8px 23px 1px teal;
+  -webkit-box-shadow: 0px 8px 23px 1px teal;
+}
+
+.submit-form {
+  font-family: Mina;
+  margin-left: 10px;
+  height: 27px;
+  width: 76px;
+  border-radius: 4px;
+}
+
+.page-selectors {
+  display: flex;
+  justify-content: space-around;
+}
+
+.page-arrows {
+  cursor: pointer;
+}
+/*
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+*/
