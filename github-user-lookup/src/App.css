@@ -38,11 +38,6 @@ html {
   .App-header img{
     max-width: 35px;
   }
-
-/*TODO make username and follower count stack at small window*/
-/*  .user-info h2:nth-child(even) {
-    clear: both;
-  }*/
 }
 /*///////End//////////*/
 
