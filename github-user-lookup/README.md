@@ -17,4 +17,7 @@
 ## Build
 `npm run build`
 
+### Be Kind!
+Get your own [access key](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) and replace the `accessToken` in utils/api.js 
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

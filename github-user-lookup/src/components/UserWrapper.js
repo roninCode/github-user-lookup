@@ -26,21 +26,13 @@ export default class UserWrapper extends React.Component{
     this.getNextPage = this.getNextPage.bind(this);
   }
 
-  mapFollower(follower) {
-    return {
-      id: follower.id,
-      handle: follower.login,
-      avatar_url: follower.avatar_url,
-    }
-  }
 
   handleSubmit(user){
     // Reset page
     const page = 1;
-
+    // Grabs user information
     fetchUserInfo(user).then(res => {
-      const pageTotal = res.followers === 0 ? 1 
-        : Math.ceil(res.followers / 30);
+      const pageTotal = res.followers === 0 ? 1 : Math.ceil(res.followers / 30);
       this.setState({
         error: null,
         user: user,
@@ -49,7 +41,7 @@ export default class UserWrapper extends React.Component{
         followerCount: res.followers,
         pageTotal,
       })
-
+      // Grabs followers' information
       return this.updateFollowersPageState(user, page)
     }).catch((err) => {
       console.error(err);
@@ -59,16 +51,11 @@ export default class UserWrapper extends React.Component{
     })
   }
 
-  handleReset(){
-    this.setState({
-      user: ""
-    })
-  }
-
+  // Grabs all followers for page (limit 30 to page)
   updateFollowersPageState(user, page) {
     return fetchUserFollowers(user, page)
       .then((res) => {
-        const followers = res.map((follower) => this.mapFollower(follower))
+        const followers = res.map((follower) => this.mapFollower(follower));
 
         this.setState({
           followers,
@@ -77,7 +64,24 @@ export default class UserWrapper extends React.Component{
       })
   }
 
+  // Grabs info for select follower
+  mapFollower(follower) {
+    return {
+      id: follower.id,
+      handle: follower.login,
+      avatar_url: follower.avatar_url,
+    }
+  }
+
+  handleReset(){
+    this.setState({
+      user: ""
+    })
+  }
+
+
   getPrevPage(){
+     // Only make API requests if within page limits
     if(this.state.page > 1) {
       const user = this.state.user;
       const page = this.state.page - 1;
@@ -87,6 +91,7 @@ export default class UserWrapper extends React.Component{
   }
 
   getNextPage(){
+    // Only make API requests if within page limits
     if(this.state.page < this.state.pageTotal) {
       const user = this.state.user;
       const page = this.state.page + 1;
@@ -96,6 +101,7 @@ export default class UserWrapper extends React.Component{
   }
 
   render(){
+    // Error handling
     if (this.state.error) {
       return (
         <div>
@@ -111,6 +117,7 @@ export default class UserWrapper extends React.Component{
       )
     }
 
+    // Initial UserName Submission field
     if(this.state.user === ""){
       return (
         <div>
@@ -118,18 +125,16 @@ export default class UserWrapper extends React.Component{
         </div>
       )
     } else {
+      // Show User Submission, Stats, Pagination, and Followers
       return (
         <div>
           <GetUserName submitUser={this.handleSubmit} reset={this.handleReset} />
-          
           <User userName={this.state.user} userImage={this.state.userImage} followerCount={this.state.followerCount} reset={this.handleReset} page={this.state.page} />
-          
           <div className="page-selectors">
             <PrevPage getPrevPage={this.getPrevPage} />
             <h3>Page {this.state.page}/{this.state.pageTotal}</h3>
             <NextPage getNextPage={this.getNextPage} />
           </div>
-
           <Followers followers={this.state.followers} changeUser={this.handleSubmit} />
         </div>
       )
